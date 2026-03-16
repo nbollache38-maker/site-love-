@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Notre histoire ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:Arial;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+}
+
+h1{
+color:#ff2a8b;
+font-size:50px;
+text-shadow:0 0 20px #ff2a8b;
+z-index:2;
+}
+
+#story{
+max-width:800px;
+font-size:26px;
+line-height:1.7;
+margin-top:20px;
+z-index:2;
+}
+
+.heart{
+font-size:60px;
+margin-top:30px;
+display:none;
+animation:beat 1.2s infinite;
+z-index:2;
+}
+
+@keyframes beat{
+0%{transform:scale(1);}
+50%{transform:scale(1.3);}
+100%{transform:scale(1);}
+}
+
+button{
+margin-top:40px;
+padding:14px 35px;
+border:none;
+border-radius:25px;
+background:#ff2a8b;
+color:white;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 0 15px #ff2a8b;
+z-index:2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<h1>Notre histoire</h1>
+
+<div id="story"></div>
+
+<div class="heart" id="heart">❤️</div>
+
+<button onclick="window.location.href='photos.html'">
+Retour aux souvenirs 📸
+</button>
+
+<script>
+
+/* texte qui s'écrit */
+
+const text = `Je me souviens encore des premiers moments avec toi.
+
+Par exemple quand on c'est perdu a Paris et qu'on (tu) etait en panique, on a meme du appeler daphné pour se retrouver.
+
+Chaque instant passé ensemble est devenu un souvenir précieux.
+
+Nos rires, nos discussions, nos moments simples…
+tout ça rend ma vie plus belle.
+
+Comme quand on a dis a Bryan qu'on aller au kebab mdrr... On aller pas au kebab. 
+
+J'espère qu'on continuera à créer encore plein de souvenirs ensemble.
+
+Tu comptes énormément pour moi.`;
+
+let i = 0;
+
+function typeWriter(){
+
+if(i < text.length){
+
+document.getElementById("story").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+
+}else{
+
+document.getElementById("heart").style.display = "block";
+
+}
+
+}
+
+typeWriter();
+
+
+/* animation LOVE derrière */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "LOVE";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+drops[x] = 1;
+
+function draw(){
+
+ctx.fillStyle = "rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#ff2a8b";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text = letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+</body>
+</html>
