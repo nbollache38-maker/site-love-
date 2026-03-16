@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Love ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+overflow:hidden;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+color:white;
+}
+
+/* animation derrière */
+
+canvas{
+position:absolute;
+top:0;
+left:0;
+}
+
+/* LOVE centre */
+
+#love{
+position:relative;
+font-size:120px;
+color:#ff2a8b;
+letter-spacing:10px;
+opacity:0;
+text-shadow:0 0 20px #ff2a8b;
+animation:appear 3s forwards;
+}
+
+@keyframes appear{
+
+0%{
+opacity:0;
+letter-spacing:80px;
+filter:blur(20px);
+}
+
+100%{
+opacity:1;
+letter-spacing:10px;
+filter:blur(0);
+}
+
+}
+
+/* bouton */
+
+button{
+margin-top:40px;
+padding:15px 40px;
+font-size:20px;
+border:none;
+border-radius:30px;
+background:#ff2a8b;
+color:white;
+cursor:pointer;
+box-shadow:0 0 20px #ff2a8b;
+z-index:2;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<h1 id="love">LOVE</h1>
+
+<button onclick="window.location.href='message.html'">
+YOU
+</button>
+
+<script>
+
+/* animation matrix LOVE */
+
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "LOVE";
+const fontSize = 16;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+
+for(let x = 0; x < columns; x++)
+drops[x] = 1;
+
+function draw(){
+
+ctx.fillStyle = "rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle = "#ff2a8b";
+ctx.font = fontSize + "px monospace";
+
+for(let i = 0; i < drops.length; i++){
+
+const text = letters[Math.floor(Math.random()*letters.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize > canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+</body>
+</html>
