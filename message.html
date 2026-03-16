@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour toi ❤️</title>
+
+<style>
+
+body{
+margin:0;
+background:black;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+flex-direction:column;
+overflow:hidden;
+padding:20px;
+}
+
+h1{
+color:#ff2a8b;
+font-size:60px;
+text-shadow:0 0 20px #ff2a8b;
+}
+
+p{
+font-size:26px;
+max-width:700px;
+line-height:1.6;
+margin-top:20px;
+}
+
+button{
+margin-top:25px;
+padding:14px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:#ff2a8b;
+color:white;
+cursor:pointer;
+box-shadow:0 0 15px #ff2a8b;
+}
+
+.heart{
+position:absolute;
+color:#ff2a8b;
+font-size:20px;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Pour toi ❤️</h1>
+
+<p>
+Depuis que je t'ai rencontrée, tout est devenu plus beau.  
+Ton sourire illumine mes journées et je suis vraiment chanceux de t'avoir dans ma vie.  
+Chaque moment avec toi compte énormément pour moi.  
+Je veux continuer à créer plein de souvenirs avec toi.  
+Je t'aime énormément ❤️
+</p>
+
+<button onclick="window.location.href='photos.html'">
+Nos souvenirs 📸
+</button>
+
+<button onclick="window.location.href='index.html'">
+Retour
+</button>
+
+<script>
+
+function createHeart(){
+
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML = "❤️";
+
+heart.style.left = Math.random()*100 + "vw";
+heart.style.fontSize = Math.random()*20 + 10 + "px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+setInterval(createHeart,300);
+
+</script>
+
+</body>
+</html>
