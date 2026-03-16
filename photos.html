@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Nos souvenirs ❤️</title>
+
+<style>
+
+body{
+background:black;
+color:white;
+font-family:Arial;
+text-align:center;
+margin:0;
+padding:40px;
+overflow-x:hidden;
+}
+
+h1{
+color:#ff2a8b;
+font-size:50px;
+text-shadow:0 0 20px #ff2a8b;
+margin-bottom:30px;
+}
+
+/* coeur qui bat */
+
+.heart{
+font-size:50px;
+animation:beat 1.2s infinite;
+margin-bottom:30px;
+}
+
+@keyframes beat{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.3);}
+100%{transform:scale(1);}
+
+}
+
+/* galerie */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+max-width:900px;
+margin:auto;
+}
+
+/* photos */
+
+img{
+width:100%;
+border-radius:15px;
+box-shadow:0 0 15px #ff2a8b;
+opacity:0;
+transform:scale(0.8);
+animation:photoAppear 1s forwards;
+}
+
+/* animation apparition */
+
+@keyframes photoAppear{
+
+to{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+/* zoom quand on passe la souris */
+
+img:hover{
+transform:scale(1.1);
+box-shadow:0 0 25px #ff2a8b;
+}
+
+/* boutons */
+
+button{
+margin-top:30px;
+padding:12px 30px;
+border:none;
+border-radius:25px;
+background:#ff2a8b;
+color:white;
+cursor:pointer;
+font-size:18px;
+box-shadow:0 0 15px #ff2a8b;
+margin-right:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>Nos souvenirs</h1>
+
+<div class="heart">❤️</div>
+
+<div class="gallery">
+
+<img src="photo1.jpg" style="animation-delay:0.2s">
+<img src="photo2.jpg" style="animation-delay:0.5s">
+<img src="photo3.jpg" style="animation-delay:0.8s">
+
+</div>
+
+<br>
+
+<button onclick="window.location.href='souvenirs.html'">
+Notre histoire ❤️
+</button>
+
+<button onclick="window.location.href='message.html'">
+Retour
+</button>
+
+</body>
+</html>
